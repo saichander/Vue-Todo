@@ -1,6 +1,12 @@
-<template>
-<h2>TODO LIST</h2>
-<stats/>
+<template lang='haml'>
+%div
+  %h2 TODO LIST
+  %Stats
+  %div{'v-if': 'showTodo'}
+    %AddTodo
+  %button{'v-else': 'showTodo', 'v-on:click': 'showAddTodo()'} Add Todo
+  %PendingTodo
+  %CompletedTodo
 </template>
 <script>
   import Stats from './Stats.vue'
@@ -10,12 +16,31 @@
 
   export default {
     name: 'Dashboard',
-    components: {
-      'stats': Stats,
-      'add-todo': AddTodo,
-      'completed-todo': CompletedTodo,
-      'pending-todo': PendingTodo
+    data () {
+      return {
+        showTodo: false
+      }
     },
-    template: '<Dashboard/>'
+    components: {
+      Stats,
+      AddTodo,
+      CompletedTodo,
+      PendingTodo
+    },
+    methods: {
+      showAddTodo () {
+        console.log('showAddTodo'+this.showTodo)
+        this.showTodo = true
+      },
+      hideTodo () {
+        console.log('true')
+        this.showTodo = false
+      }
+    },
+    watch: {
+      'hide-todo' () {
+        this.hideTodo()
+       }
+    }
   }
 </script>
