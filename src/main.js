@@ -9,25 +9,35 @@ Vue.use(Vuex)
 Vue.config.productionTip = false
 const state = {
   showTodoForm: false,
-  pendingTodos: [{id: 1, title: 'Pending Test', description: 'Test Description', selected: false}],
-  completedTodos: [{id: 2, title: 'Completed Test', description: 'Test Description', selected: true}]
+  showEditTodo: false,
+  pendingTodos: [{title: 'Pending Test', description: 'Test Description', selected: false}],
+  completedTodos: [{title: 'Completed Test', description: 'Test Description', selected: true}]
 }
 
 const mutations = {
   updateShowTodoForm (state, value) {
     state.showTodoForm = value
   },
+  updateShowEditTodo (state, value) {
+    state.showEditTodo = value
+  },
   pushToPendingTodos (state, todo) {
+    todo.selected = false
     state.pendingTodos.push(todo)
   },
   pushToCompletedTodos (state, todo) {
+    todo.selected = true
     state.completedTodos.push(todo)
   },
   removePendingTodo (state, todo) {
-    state.pendingTodos.pop(todo)
+    todo.selected = false
+    let index = state.pendingTodos.indexOf(todo)
+    state.pendingTodos.splice(index, 1)
   },
   removeCompletedTodo (state, todo) {
-    state.completedTodos.pop(todo)
+    todo.selected = true
+    let index = state.completedTodos.indexOf(todo)
+    state.completedTodos.splice(index, 1)
   }
 }
 
