@@ -2,9 +2,9 @@
 %div
   %h2 TODO LIST
   %Stats
-  %div{'v-if': 'showTodo'}
+  %div{'v-if': '$store.state.showTodoForm'}
     %AddTodo
-  %button{'v-else': 'showTodo', 'v-on:click': 'showAddTodo()'} Add Todo
+  %button{'v-else': '$store.state.showTodoForm', 'v-on:click': 'showAddTodo()'} Add Todo
   %PendingTodo
   %CompletedTodo
 </template>
@@ -13,13 +13,13 @@
   import AddTodo from './AddTodo.vue'
   import CompletedTodo from './CompletedTodo.vue'
   import PendingTodo from './PendingTodo.vue'
-
   export default {
     name: 'Dashboard',
     data () {
       return {
-        showTodo: false
       }
+    },
+    computed: {
     },
     components: {
       Stats,
@@ -27,20 +27,17 @@
       CompletedTodo,
       PendingTodo
     },
+    computed: {
+      test () {
+        console.log(this.$store)
+        return this.$store.state.test
+      }
+    },
     methods: {
       showAddTodo () {
         console.log('showAddTodo'+this.showTodo)
-        this.showTodo = true
-      },
-      hideTodo () {
-        console.log('true')
-        this.showTodo = false
+        this.$store.commit('updateShowTodoForm', true)
       }
-    },
-    watch: {
-      'hide-todo' () {
-        this.hideTodo()
-       }
     }
   }
 </script>

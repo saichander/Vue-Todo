@@ -29,13 +29,15 @@
     methods: {
       saveTodo () {
         console.log(this.title + this.description)
-        this.pendingTodo << { title: this.title, description: this.description}
+        let todo = { title: this.title, description: this.description, selected: false}
+        this.$store.commit('pushToPendingTodos', todo)
+        this.$store.commit('updateShowTodoForm', false)
       },
       cancelTodo () {
         console.log(this.title)
         this.title = ''
-        this.description = '',
-        this.$emit('hide-todo')
+        this.description = ''
+        this.$store.commit('updateShowTodoForm', false)
       }
     }
   }
