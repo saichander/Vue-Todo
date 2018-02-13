@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <section class="main-section section">
       <div class="container content">
         <Dashboard/>
@@ -22,6 +21,7 @@ export default {
 </script>
 
 <style>
+@import '~bulma'
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -29,5 +29,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.main-section {
 }
 </style>

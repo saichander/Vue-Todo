@@ -1,10 +1,11 @@
 <template lang='haml'>
 %div
-  %h2 Completed Todos
+  .subtitle Completed Todos
   %div{'v-for': 'todo in $store.state.completedTodos'}
     %input{type: 'checkbox', 'v-model': 'todo.selected', 'v-on:change': 'moveToPendingTodos(todo)'}
-    %span.title {{ todo.title }}
-    %button{'v-on:click': 'removeCompletedTodo(todo)'} delete
+    %span {{ todo.title }}
+    %span{'v-on:click': 'removeCompletedTodo(todo)'}
+      %i.fas.fa-trash-alt
 </template>
 <script>
   export default {

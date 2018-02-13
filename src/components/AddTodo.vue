@@ -1,21 +1,19 @@
 <template lang='haml'>
-  %div.content
+  %div.container
     %h2 Add TODO
-    %div.field.is-horizontal
-      %div.field-label.is-normal
-        %label.label Title
-    %div.field.is-horizontal
-      %div.control.is-normal
+    %div.field
+      %label.label Title
+      %div.control
         %input.input{type: 'text', 'v-model': 'title'}
-    %div.field.is-horizontal
-      %div.field-label.is-normal
-        %label.label Description
-    %div.field.is-horizontal
-      %div.control.is-normal
+    %div.field
+      %label.label Description
+      %div.control
         %input.input{type: 'text', 'v-model': 'description'}
-    %div.some-class
-      %button.button.is-primary{"v-on:click": "saveTodo()"} Save
-      %button.button.is-primary{"v-on:click": "cancelTodo()"} Cancel
+    %div.field.is-grouped
+      %div.control
+        %button.button.is-link{"v-on:click": "saveTodo()"} Save
+      %div.control
+        %button.button.is-danger{"v-on:click": "cancelTodo()"} Cancel
 </template>
 <script>
   export default {

@@ -10,6 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "bootstrap": "^4.0.0",
+    "bootstrap-vue": "^2.0.0-rc.1",
+    "bulma": "^0.6.2",
     "hamljs": "^0.6.2",
     "vue": "^2.5.2",
     "vuex": "^3.0.1"

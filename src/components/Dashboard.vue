@@ -1,10 +1,10 @@
 <template lang='haml'>
 %div
-  %h2 TODO LIST
+  .title TODO LIST
   %Stats
   %div{'v-if': '$store.state.showTodoForm'}
     %AddTodo
-  %button{'v-else': '$store.state.showTodoForm', 'v-on:click': 'showAddTodo()'} Add Todo
+  %button{'v-else': '$store.state.showTodoForm', 'v-on:click': 'showAddTodo()', class: 'button is-rounded is-warning'} Add Todo
   %PendingTodo
   %CompletedTodo
 </template>
