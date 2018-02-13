@@ -4,7 +4,9 @@
   %Stats
   %div{'v-if': '$store.state.showTodoForm'}
     %AddTodo
-  %button{'v-else': '$store.state.showTodoForm', 'v-on:click': 'showAddTodo()', class: 'button is-rounded is-warning'} Add Todo
+  %button{'v-else': '$store.state.showTodoForm', 'v-on:click': 'showAddTodo()', class: 'button is-rounded is-info'}
+    %span
+      Add Todo
   %PendingTodo
   %CompletedTodo
 </template>

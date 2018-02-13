@@ -2,15 +2,17 @@
 %div
   .subtitle Pending Todos
   %div{'v-for': 'todo in $store.state.pendingTodos', class: 'container'}
-    %div.columns
-      %input.column{type: 'checkbox', 'v-model': 'todo.selected', 'v-on:change': 'moveToCompletedTodos(todo)'}
-      %span.column {{ todo.title }}
-      %span.column{'v-on:click': 'showEditTodoForm(todo)'}
-        %i.fas.fa-pencil-alt
-      %span.column{'v-on:click': 'removePendingTodo(todo)'}
-        %i.fas.fa-trash-alt
-    %div{'v-if': '$store.state.showEditTodo'}
-      %EditTodo{':todo': 'todo'}
+    %div.box
+      %div.level
+        %button.level-item.button.is-success{type: 'checkbox', 'v-model': 'todo.selected', 'v-on:click': 'moveToCompletedTodos(todo)'} Mark as Complete
+        %span.level-item {{ todo.title }}
+        %span.level-item{'v-on:click': 'showEditTodo(todo)'}
+          %i.fas.fa-pencil-alt
+        %span.level-item{'v-on:click': 'removePendingTodo(todo)'}
+          %i.fas.fa-trash-alt
+      %div.level{'v-show': 'todo.showEditTodoForm'}
+        %EditTodo{':todo': 'todo'}
+    %div
 </template>
 <script>
   import AddTodo from './AddTodo.vue'
@@ -24,13 +26,14 @@
       EditTodo
     },
     methods: {
-      showEditTodoForm (todo) {
-        this.$store.commit('updateShowEditTodo', true)
+      showEditTodo (todo) {
+        todo.showEditTodoForm = true;
       },
       removePendingTodo (todo) {
         this.$store.commit('removePendingTodo', todo)
       },
       moveToCompletedTodos (todo) {
+        todo.selected = true
         this.$store.commit('removePendingTodo', todo)
         this.$store.commit('pushToCompletedTodos', todo)
       }
@@ -39,4 +42,11 @@
     }
   }
 </script>
+<style>
+  $box-background-color: #000;
+  @import '~bulma';
+  .box {
+    width: 50%;
+  }
+</style>
 

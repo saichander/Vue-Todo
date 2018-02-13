@@ -10,7 +10,7 @@
         %input.input{type: 'text', 'v-model': 'todo.description'}
     %div.field.is-grouped
       %div.control
-        %button.button.is-link{"v-on:click": "closeTodo()"} Save & Close
+        %button.button.is-link{"v-on:click": "closeTodo(todo)"} Save & Close
       %div.control
         %button.button.is-danger{"v-on:click": "resetTodo(todo)"} Reset
 </template>
@@ -28,8 +28,8 @@
         todo.title = this.tempTitle
         todo.description = this.tempDescription
       },
-      closeTodo () {
-        this.$store.commit('updateShowEditTodo', false)
+      closeTodo (todo) {
+        todo.showEditTodoForm = false;
       }
     },
     created () {
