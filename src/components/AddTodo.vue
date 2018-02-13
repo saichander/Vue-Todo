@@ -27,8 +27,10 @@
     methods: {
       saveTodo () {
         console.log(this.title + this.description)
-        let todo = { title: this.title, description: this.description, selected: false}
-        this.$store.commit('pushToPendingTodos', todo)
+        if (this.title != '') {
+          let todo = { title: this.title, description: this.description, selected: false}
+          this.$store.commit('pushToPendingTodos', todo)
+        }
         this.$store.commit('updateShowTodoForm', false)
       },
       cancelTodo () {

@@ -10,7 +10,7 @@
           %i.fas.fa-pencil-alt
         %span.level-item{'v-on:click': 'removePendingTodo(todo)'}
           %i.fas.fa-trash-alt
-      %div.level{'v-show': 'todo.showEditTodoForm'}
+      %div.level{'v-if': 'todo.showEditTodoForm'}
         %EditTodo{':todo': 'todo'}
     %div
 </template>
