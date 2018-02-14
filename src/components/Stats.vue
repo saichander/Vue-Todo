@@ -6,7 +6,7 @@
         %table.is-narrow.is-bordered
           %thead
             %tr.is-selected
-              %th Completed Jobs
+              %th Completed Todos
           %tbody
             %tr
               %td {{ $store.state.completedTodos.length }}
@@ -14,7 +14,7 @@
         %table.is-narrow.is-bordered
           %thead
             %tr.is-selected
-              %th Pending Jobs
+              %th Pending Todos
           %tbody
             %tr
               %td {{ $store.state.pendingTodos.length }}
